@@ -1,0 +1,14 @@
+{% extends 'main/base.html'%}
+
+{% block titulo-pestaña %}Pagina 3{% endblock %}
+
+{% block titulo %}{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="buttons">
+      <button class="btn-grande" onclick="location.href='{% url 'pag4' %}'">Dolor que cede en reposo y permite el reposo nocturno, pero que aumenta con el movimiento y/o según avanza el día</button>
+      <button class="btn-grande" onclick="location.href='{% url 'pag5' %}'">Dolor continuo que no cede o incluso aumenta con el reposo, dolor al modificar o cambiar la postura, se puede dar tanto de forma nocturna como diurna sin distinción</button>
+    </div>
+  </div>
+{% endblock %}

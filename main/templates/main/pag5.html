@@ -1,0 +1,19 @@
+{% extends 'main/base.html'%}
+
+{% block titulo-pestaña %}Pagina 5{% endblock %}
+
+{% block titulo %}{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="buttons">
+      <form method="post">
+        {% csrf_token %}
+          <button class="btn-grande" type="submit" name="dolor" value="Dolor_ligamentoso">Dolor que sobreviene al realizar el juego de la articulación siendo más intenso en las posiciones finales de sus movimientos, este dolor no aparece de forma inmediata. Dolor que aparece al mantener una posición durante largo tiempo, es:<br>DOLOR LIGAMENTOSO</button>
+          <button class="btn-grande" type="submit" name="dolor" value="Dolor_articular">Dolor en la articulación, está hinchada y puede cursar con rigidez de esta. Es un dolor profundo y aumenta con todos los movimientos, es:<br>DOLOR ARTICULAR</button>
+          <button class="btn-grande" type="submit" name="dolor" value="Dolor_neurologico">Dolor aguado y quemante, con o sin alteraciones de la sensibilidad, se puede describir el trayecto del dolor. Lesiones del nervio en su recorrido, es:<br>DOLOR NEUROLÓGICO</button>
+          <button class="btn-grande" type="submit" name="dolor" value="Dolor_vascular">Dolor constante y mal localizado que puede irradiarse a las piernas o a los brazos, después de caminar o hacer ejercicio, es:<br>DOLOR VASCULAR</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'main/base.html'%}
+
+{% block titulo-pestaña %}Pagina 6{% endblock %}
+
+{% block titulo %}{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="buttons">
+      <form method="post">
+        {% csrf_token %}
+          <button class="btn-grande" type="submit" name="dolor" value="Dolor_muscular">Dolor localizado en la zona central del músculo con la contracción y el estiramiento del músculo implicado, es:<br>DOLOR MUSCULAR</button>
+          <button class="btn-grande" type="submit" name="dolor" value="Dolor_tendinoso">Dolor localizado en las zonas distales del músculo o pegadas a las articulaciones que se agudiza con la contracción y el estiramiento del músculo implicado, es:<br>DOLOR TENDINOSO</button>
+        </form>
+    </div>
+  </div>
+{% endblock %}

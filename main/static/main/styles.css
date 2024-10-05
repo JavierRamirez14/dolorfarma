@@ -1,0 +1,271 @@
+* {
+  margin: auto;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+  
+}
+
+header {
+  background-color: #449846;
+  padding: 15px 0;
+  position: relative; /* Necesario para el posicionamiento absoluto del logo */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+header i {
+  color: white;
+  position: absolute;
+  left: 2%;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+header .logo-principal {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header .logo-principal a {
+  text-decoration: none;
+  color: rgb(245, 245, 245);
+  font-weight: bold;
+}
+
+header .user-section {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacio entre el nombre de usuario y el icono de logout */
+  margin-right: 40px;
+}
+
+header .nombre_usuario {
+  color: white;
+  margin: 0;
+}
+
+header .logout img {
+  height: 25px;
+}
+
+
+
+.titulo {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.linea-horizontal {
+  width: 80%; /* Ancho de la línea */
+  height: 1px; /* Grosor de la línea */
+  background-color: #e4e4e4; /* Color de la línea */
+  margin: 0 auto; /* Centra la línea horizontalmente */
+}
+
+.header2 {
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Página principal, la de tres botones*/
+
+.boton_app {
+  color: white;
+  text-decoration: none;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons_int {
+  display: flex; /* Utiliza flexbox para colocar los botones en una fila */
+  justify-content: center; /* Centra los elementos a lo largo del eje principal (horizontalmente) */
+  align-items: center; /* Centra los elementos a lo largo del eje secundario (verticalmente) */
+}
+
+.buttons_int form {
+  display: flex; /* También aplica flexbox al formulario para controlar los botones dentro de él */
+}
+
+.buttons_int button {
+  border: none; /* Elimina el borde por defecto de los botones */
+  background: none; /* Elimina el fondo por defecto de los botones */
+  margin: 0; /* Elimina el margen por defecto */
+  padding: 0; /* Elimina el relleno por defecto */
+  cursor: pointer;
+}
+
+.buttons_int button img {
+  width: 140px; /* Ajusta el ancho de las imágenes según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+  
+/* Estilos comunes para todos los botones */
+.btn-pequeño, .btn-medio, .btn-grande {
+  display: flex; /* Usar flexbox para centrar el contenido */
+  align-items: center; /* Centrar verticalmente el contenido */
+  justify-content: center; /* Centrar horizontalmente el contenido */
+  padding: 12px 24px; /* Padding uniforme */
+  background-color: #449846; /* Color base */
+  color: white; /* Texto blanco */
+  border: 2px solid transparent; /* Borde invisible por defecto */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+  font-size: 16px; /* Tamaño de fuente adecuado */
+  font-weight: 600; /* Peso de fuente destacado */
+  text-align: center; /* Alineación del texto en el centro */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilos específicos para botón pequeño */
+.btn-pequeño {
+  width: 400px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+/* Estilos específicos para botón medio */
+.btn-medio {
+  width: 400px;
+  height: 80px; /* Ajustado para ser un poco más alto que el pequeño */
+  margin-bottom: 20px;
+}
+
+/* Estilos específicos para botón grande */
+.btn-grande {
+  width: 100%; /* Ocupa el 100% del contenedor padre */
+  max-width: 600px; /* Máximo ancho para evitar que se estire demasiado */
+  height: auto; /* Altura ajustada automáticamente */
+  margin-bottom: 15px;
+  background-color: #469e48; /* Color base más oscuro */
+  padding: 16px 24px; /* Padding ajustado para mayor espacio en botones grandes */
+  font-size: 14px; /* Tamaño de fuente mayor para mejor legibilidad */
+  line-height: 1.5; /* Mayor interlineado para texto largo */
+  font-weight: 200;
+}
+
+/* Estilos en hover para todos los botones */
+.btn-pequeño:hover, .btn-medio:hover, .btn-grande:hover {
+  background-color: #50b854; /* Color más claro en hover */
+  transform: scale(1.05); /* Efecto de escala */
+  border: 2px solid #ffffff; /* Borde blanco en hover */
+}
+
+/* Estilos en foco para todos los botones */
+.btn-pequeño:focus, .btn-medio:focus, .btn-grande:focus {
+  outline: none; /* Eliminar contorno por defecto */
+  box-shadow: 0 0 0 3px rgba(0, 180, 82, 0.5); /* Sombra externa en foco */
+}
+
+
+/* Botones Caras */
+
+.buttons_cara {
+  display: flex; /* Utiliza flexbox para colocar los botones en una fila */
+  justify-content: center; /* Centra los elementos a lo largo del eje principal (horizontalmente) */
+  align-items: center; /* Centra los elementos a lo largo del eje secundario (verticalmente) */
+}
+
+.buttons_cara form {
+  display: flex; /* También aplica flexbox al formulario para controlar los botones dentro de él */
+}
+
+.buttons_cara .cara {
+  border: none; /* Elimina el borde por defecto de los botones */
+  background: none; /* Elimina el fondo por defecto de los botones */
+  margin: 0; /* Elimina el margen por defecto */
+  padding: 0 5px; /* Elimina el relleno por defecto */
+  cursor: pointer;
+}
+
+.buttons_cara .cara img {
+  width: 140px; /* Ajusta el ancho de las imágenes según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+
+/* Página del cuerpo*/
+
+.img_cuerpo {
+  text-align: center;
+  height: 400px;
+}
+  
+.container {
+  text-align: center;
+}
+  
+.cuerpo {
+  position: relative;
+  display: inline-block;
+}
+
+.body-image {
+  max-width: 100%;
+}
+
+.btn_cuerpo {
+  position: absolute;
+  background: radial-gradient(circle, #5ddc5b, #38a049);
+  color: white;
+  width: 4px; /* Ancho del botón */
+  height: 12px; /* Altura del botón */
+  border-radius: 50%; /* Hace que el botón sea circular */
+  border: none;
+  cursor: pointer;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden; /* Oculta el texto que sobresale del botón */
+}
+
+.btn_cuerpo:hover {
+  background-color: #54c457;
+}
+
+.popup {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-size: 9px;
+  display: none;
+  pointer-events: none; /* Permite que el popup no bloquee los eventos del mouse en los botones */
+}

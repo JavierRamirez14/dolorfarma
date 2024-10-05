@@ -1,0 +1,40 @@
+{% extends 'main/base_not_logged.html'%}
+
+{% block titulo-pestaña %}Sign Up{% endblock %}
+
+
+
+{% block contenido %}
+<div class="formulario2">
+    <img src="/static/images/dolorfarma.png" alt="Logo dolorfarma" class="img_logo">
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="usurname2">
+            <input type="text" id="id_username" name="username"  required>
+            <label for="id_username">Nombre y Apellidos</label>
+        </div>
+
+        <div class="usurname2">
+            <input type="email" id="email-input" required>
+            <label for="email-input">Email</label>
+            <span></span>
+          </div>
+
+        <div class="usurname2">
+            <input type="password" id="id_password1" name="password1" required>
+            <label for="id_password1">Contraseña</label>
+        </div>
+
+        <div class="usurname2">
+            <input type="password" id="id_password2" name="password2" required>
+            <label for="id_password2">Confirmar Contraseña</label>
+        </div>
+        <input type="submit" value="Crear Usuario">
+        <div class="registrarse">
+            ¿Ya tiene cuenta? <a href="{% url 'login' %}">Iniciar Sesión</a>
+        </div>
+    </form>
+</div>
+
+{{form.errors}}
+{% endblock %}

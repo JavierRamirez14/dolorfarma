@@ -1,0 +1,17 @@
+{% extends 'main/base.html'%}
+
+{% block titulo-pestaña %}Inicio{% endblock %}
+
+{% block titulo %}<h2>Inicio</h2>{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="buttons">
+      <button class="btn-medio" onclick="location.href='{% url 'cuerpo' %}'">Diagnóstico Médico</button>
+      <button class="btn-medio" onclick="location.href='{% url 'pag3' %}'">Sin Diagnóstico Médico</button>
+      <button class="btn-medio" onclick="location.href='{% url 'buscar_patologia' %}'">Buscar Patología</button>
+      <button class="btn-medio"><a class="boton_app" href="https://dolorfarma.streamlit.app/">App</a></button>
+      
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'main/base_not_logged.html'%}
+
+{% block titulo-pestaña %}login{% endblock %}
+
+
+
+{% block contenido %}
+
+<div class="formulario">
+    <img src="/static/images/dolorfarma.png" alt="Logo dolorfarma" class="img_logo">
+    {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">
+                    {{ message|safe }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="usurname">
+            <input type="text" name="username" required >
+            <label>Correo electrónico</label>
+        </div>
+        <div class="usurname">
+            <input type="password" name="password"  required     >
+            <label>Contraseña</label>
+        </div>
+        <div class="recordar">¿Ha olvidado la contraseña?</div>
+        <input type="submit" value="Iniciar Sesión">
+        
+    </form>
+    
+       
+</div>
+
+{% endblock %}

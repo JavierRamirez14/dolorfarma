@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permiso de Notificación</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .form-container {
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    input[type="tel"] {
+        width: calc(100% - 20px);
+        padding: 8px 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    button[type="button"]:first-of-type {
+        background-color: #4CAF50;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    button[type="button"]:last-of-type {
+        background-color: #f44336;
+        color: white;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+</style>
+<script>
+    const pdfUrl = "{{ pdf_url }}"; // Asegúrate de que esta variable se pase correctamente desde Django
+
+    function aceptarNotificaciones() {
+        var numeroTelefono = document.getElementById("telefono").value;
+
+        if (numeroTelefono === "") {
+            alert("Por favor, ingresa tu número de teléfono si deseas recibir notificaciones.");
+            return false;
+        }
+
+        alert("¡Gracias por aceptar recibir notificaciones!");
+        redirectToPdf();
+        return false;
+    }
+
+    function rechazarNotificaciones() {
+        alert("Has rechazado las notificaciones.");
+        redirectToPdf();
+        return false;
+    }
+
+    function redirectToPdf() {
+        window.location.href = pdfUrl;
+    }
+</script>
+</head>
+<body>
+<div class="form-container">
+    <h1>Recibir Notificaciones</h1>
+    <form>
+        <label for="telefono">Número de Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" placeholder="123-456-7890">
+
+        <button type="button" onclick="aceptarNotificaciones()">Aceptar Notificaciones</button>
+        <button type="button" onclick="rechazarNotificaciones()">Rechazar Notificaciones</button>
+    </form>
+</div>
+</body>
+</html>

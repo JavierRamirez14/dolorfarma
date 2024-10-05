@@ -1,0 +1,25 @@
+{% extends 'main/base.html'%}
+
+{% block titulo-pestaña %}Intensidad{% endblock %}
+
+{% block titulo %}<h2>Intensidad</h2>{% endblock %}
+
+{% block contenido %}
+
+{% load static %}
+
+<div class="container">
+    <div class="buttons_cara">
+        <form method="post">
+            {% csrf_token %}
+            <button class="cara" type="submit" name="intensidad_dolor" value="Sin Dolor"><img src="{% static 'images/sin_dolor.png' %}"></button>
+            <button class="cara" type="submit" name="intensidad_dolor" value="Dolor Leve"><img src="{% static 'images/dolor_leve.png' %}"></button>
+            <button class="cara" type="submit" name="intensidad_dolor" value="Dolor Moderado"><img src="{% static 'images/dolor_moderado.png' %}"></button>
+            <button class="cara" type="submit" name="intensidad_dolor" value="Dolor Intenso"><img src="{% static 'images/dolor_intenso.png' %}"></button>
+            <button class="cara" type="submit" name="intensidad_dolor" value="Dolor Muy Intenso"><img src="{% static 'images/dolor_muy_intenso.png' %}"></button>
+            <button class="cara" type="submit" name="intensidad_dolor" value="Dolor Insoportable"><img src="{% static 'images/dolor_insoportable.png' %}"></button>
+
+        </form>
+    </div>
+  </div>
+{% endblock %}

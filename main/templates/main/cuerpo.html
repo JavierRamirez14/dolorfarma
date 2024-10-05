@@ -1,0 +1,53 @@
+{% extends 'main/base.html'%}
+
+{% block titulo-pestaña %}Muneco_articular{% endblock %}
+
+{% block titulo %}<h2>Indique la zona de su dolor</h2>{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="cuerpo">
+        <img src="/static/images/cuerpo-humano.png" alt="Cuerpo humano" class="img_cuerpo">
+        <form method="post">
+            {% csrf_token %}
+            
+            <button class="btn_cuerpo" type="submit" name="cuerpo_dolor" value="Cuello" style="top: 17%; left: 51%;" data-text="Cuello"></button>
+            <button class="btn_cuerpo" type="submit" name="cuerpo_dolor" value="Hombro" style="top: 22%; left: 42%;" data-text="Hombro"></button>
+            <button class="btn_cuerpo" type="submit" name="cuerpo_dolor" value="Codo" style="top: 38%; left: 41%;" data-text="Codo"></button>
+            <button class="btn_cuerpo" type="submit" name="cuerpo_dolor" value="Mano" style="top: 53%; left: 38%;" data-text="Mano"></button>
+            <button class="btn_cuerpo" type="submit" name="cuerpo_dolor" value="Dorsal" style="top: 28%; left: 51%;" data-text="Dorsal"></button>
+            <button class="btn_cuerpo" type="submit" name="cuerpo_dolor" value="Lumbar" style="top: 45%; left: 51%;" data-text="Lumbar"></button>
+            <button class="btn_cuerpo" type="submit" name="cuerpo_dolor" value="Rodilla" style="top: 70%; left: 55%;" data-text="Rodilla"></button>
+            <button class="btn_cuerpo" type="submit" name="cuerpo_dolor" value="Pie" style="top: 91%; left: 56%;" data-text="Pie"></button>
+        </form>
+    </div>
+</div>
+
+<div id="popup" class="popup">
+    <p id="popup-text" class="popup-text"></p>
+</div>
+
+<script>
+    const buttons = document.querySelectorAll('.btn_cuerpo');
+    const popup = document.getElementById('popup');
+    const popupText = document.getElementById('popup-text');
+
+    buttons.forEach(button => {
+        button.addEventListener('mouseover', () => {
+            const text = button.dataset.text;
+            const buttonRect = button.getBoundingClientRect();
+            popupText.innerText = text;
+            popup.style.top = `${buttonRect.top - popup.offsetHeight - 12}px`; // Ajuste de posición hacia arriba
+            popup.style.left = `${buttonRect.left + (button.offsetWidth - popup.offsetWidth) / 2}px`; // Centra el popup horizontalmente
+            popup.style.display = 'block';
+        });
+
+        button.addEventListener('mouseout', () => {
+            popup.style.display = 'none';
+        });
+    });
+
+
+    
+</script>
+{% endblock %}

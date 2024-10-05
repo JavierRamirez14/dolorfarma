@@ -1,0 +1,21 @@
+{% extends 'main/base.html'%}
+
+{% block titulo-pestaña %}Duracion{% endblock %}
+
+{% block titulo %}<h2>Duracion</h2>{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="buttons">
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn-pequeño" type="submit" name="duracion_dolor" value="Muy Corta">Primeras 72 horas</button>
+            <button class="btn-pequeño" type="submit" name="duracion_dolor" value="Corta">72 horas a 5 días</button>
+            <button class="btn-pequeño" type="submit" name="duracion_dolor" value="Media">5 días a 3 semanas</button>
+            <button class="btn-pequeño" type="submit" name="duracion_dolor" value="Larga">3 semanas a 6 semanas</button>
+            <button class="btn-pequeño" type="submit" name="duracion_dolor" value="Muy Larga">6 semanas a 3 meses</button>
+            <button class="btn-pequeño" type="submit" name="duracion_dolor" value="Demasiado Larga">Más de 3 meses</button>
+        </form>
+    </div>
+  </div>
+{% endblock %}

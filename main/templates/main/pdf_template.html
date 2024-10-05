@@ -1,0 +1,169 @@
+{% extends 'main/base.html' %}
+
+{% load custom_filters %}
+
+{% block titulo-pestaña %}Confirmación{% endblock %}
+
+{% block titulo %}<h2>Resultado de la Consulta</h2>{% endblock %}
+
+{% block contenido %}
+
+<div class="container">
+    {% if titulo %}
+    <div class="title-container">
+        <h2>{{ titulo }}</h2>
+        <a href="{{ pdf_url }}" download="consulta_{{ consulta.id }}.pdf">
+            <button class="download-btn">Descargar PDF</button>
+        </a>
+        <a href="#">
+            Enlace
+        </a>
+    </div>
+    {% endif %}
+    <div class="acordeon">
+        {{ contenido | safe }} 
+    </div>
+    {% if qr_code_image %}
+    <div class="qr-code">
+        <h3>Escanee el código QR para abrir el PDF en su móvil:</h3>
+        <img src="data:image/png;base64,{{ qr_code_image|b64encode }}" alt="Código QR">
+    </div>
+    {% endif %}
+</div>
+<style>
+
+.container {
+    width: 80%;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center; /* Centra el título horizontalmente */
+    align-items: center; /* Alinea verticalmente el título y el botón */
+    position: relative;
+}
+
+.title-container h2 {
+    margin: 0;
+}
+
+.title-container a {
+    position: absolute;
+    right: 10%;
+    text-decoration: none;
+}
+
+.download-btn {
+    background-color: #54c457; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Relleno interno */
+    font-size: 12px; /* Tamaño de fuente */
+    border-radius: 15px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Añade una transición suave para el cambio de color de fondo */
+}
+
+.download-btn:hover {
+    background-color: #46ac4a; /* Color de fondo al pasar el ratón */
+}
+
+.container h2 {
+    text-align: center;
+}
+
+.container a {
+    display: flex;
+    margin-left: 70%;
+}
+
+.acordeon .box {
+    position: relative;
+    margin: 10px 0;
+    border-radius: 5px; /* Borde redondeado para todo el box */
+    overflow: hidden; /* Asegura que el contenido no sobresalga del borde redondeado */
+}
+
+.acordeon .label-acordeon {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    color: black;
+    padding: 15px 10px;
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}
+
+.acordeon .label-acordeon::after {
+    content: '\25BC'; /* Flecha hacia abajo (Unicode) */
+    font-size: 16px;
+    position: absolute;
+    right: 27px; /* Espacio a la derecha para la flecha */
+    top: 50%;
+    transform: translateY(-50%); /* Centrar verticalmente */
+    transition: transform 0.3s ease; /* Animación para rotar la flecha */
+}
+
+.acordeon .box.active .label-acordeon::after {
+    transform: translateY(-50%) rotate(180deg); /* Rotar la flecha hacia arriba cuando está activo */
+}
+
+.acordeon .content-acordeon {
+    background-color: transparentº;
+    max-height: 0;
+    text-align: justify;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+
+.acordeon .content-acordeon p {
+    margin: 10px 0; /* Agrega margen superior e inferior para separar el texto */
+}
+
+.acordeon .content-acordeon li {
+    margin: 10px 0; /* Agrega margen superior e inferior para separar el texto */
+}
+
+.acordeon .box.active .content-acordeon {
+    max-height: 100000px; /* Suficiente altura para acomodar el contenido */
+}
+
+.acordeon {
+    margin-top: 20px;
+}
+
+
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const boxes = document.querySelectorAll('.acordeon .box');
+
+    boxes.forEach(box => {
+        const label = box.querySelector('.label-acordeon');
+        const content = box.querySelector('.content-acordeon');
+
+        label.addEventListener('click', () => {
+            if (box.classList.contains('active')) {
+                box.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                boxes.forEach(b => {
+                    b.classList.remove('active');
+                    b.querySelector('.content-acordeon').style.maxHeight = null;
+                });
+                box.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+});
+
+
+</script>
+{% endblock %}
