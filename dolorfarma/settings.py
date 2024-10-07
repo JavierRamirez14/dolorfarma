@@ -140,18 +140,21 @@ SECURE_SSL_REDIRECT = False
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
+    'disable_existing_loggers': True,  # Deshabilita todos los loggers existentes
+    'formatters': {
+        'simple': {
+            'format': '%(message)s',
         },
     },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
         },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'ERROR',  # Ajusta el nivel a ERROR para minimizar el ruido
     },
 }
 
