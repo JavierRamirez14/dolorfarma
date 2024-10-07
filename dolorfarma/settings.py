@@ -155,7 +155,7 @@ LOGGING = {
     },
 }
 
-CSRF_TRUSTED_ORIGINS = ['https://dolorfarma.com', 'https://www.dolorfarma.com']
+CSRF_TRUSTED_ORIGINS = ['https://dolorfarma.com', 'https://www.dolorfarma.com', 'http://dolorfarma.com', 'http://www.dolorfarma.com']
 
 
 # Media files configuration
