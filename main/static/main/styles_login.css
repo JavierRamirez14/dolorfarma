@@ -116,7 +116,7 @@ header .logout img {
 
 .formulario .img_logo {
     display: flex;
-    height: 50px;
+    height: 75px;
     text-align: center;
     padding: 10px 0 20px 0;
     border-bottom: 1px solid silver;
@@ -195,6 +195,7 @@ input[type="submit"] {
     color: white;
     cursor: pointer;
     outline: none;
+    margin-bottom: 15px;
 }
 
 input[type="submit"]:hover {
