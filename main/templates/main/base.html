@@ -8,6 +8,7 @@
 
         {% load static %}
         <link rel="stylesheet" href="{% static 'main/styles.css' %}">
+        <link rel="shortcut icon" href="{% static 'images/dolorfarma_favicon.png' %}">
     </head>
     <script>
         function goBack() {
@@ -25,13 +26,6 @@
                 <a class="logout" href="{% url 'logout' %}"><img src="{% static 'images/logout.png' %}"></a>
             </div>
         </header>
-
-        <div class = header2>
-            <div class="titulo">
-                {% block titulo %}{% endblock %}
-            </div>
-            
-        </div>
         
         {% block contenido %}
         {% endblock %}
