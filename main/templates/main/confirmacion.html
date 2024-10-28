@@ -12,81 +12,114 @@
     <div class="title-container">
         <h2>{{ titulo }}</h2>
         
-        <div class="qr-code">
-            <img class="qr-image" src="data:image/png;base64,{{ qr_code_image|b64encode }}" alt="Código QR">
-        </div>
+        <!-- Botón para abrir el modal en todas las pantallas -->
+        <button class="qr-button" id="openQrModal">QR</button>
     </div>
     {% endif %}
+    
     <div class="acordeon">
         {{ contenido | safe }} 
     </div>
-    {% if qr_code_image %}
 
-    {% endif %}
+    <!-- Modal para mostrar el código QR en grande -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <img class="qr-image-large" src="data:image/png;base64,{{ qr_code_image|b64encode }}" alt="Código QR">
+        </div>
+    </div>
 </div>
-<style>
 
+<style>
     .container {
         width: 80%;
+        margin: 0 auto;
+        padding-top: 20px;
     }
-    
+
     .title-container {
         display: flex;
-        justify-content: center; /* Centra el título horizontalmente */
-        align-items: center; /* Alinea verticalmente el título y el botón */
+        justify-content: center;
+        align-items: center;
         position: relative;
+        flex-direction: row; /* Cambiar a fila para alinear el botón a la derecha del título */
     }
-    
+
     .title-container h2 {
-        margin: 0;
-        margin-top: 15px;
-        margin-bottom: 15px;
+        margin: 10px 0;
+        text-align: center;
+        flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
     }
-    
-    .title-container .qr-code {
-        position: absolute;
-        right: 10%;
-        margin-top: 20px;
-        text-decoration: none;
+
+    /* Estilos para el botón de QR en todas las pantallas */
+    .qr-button {
+        background-color: #449846;
+        color: white;
+        padding: 8px 8px;
+        position: absolute; /* Posiciona el botón en la parte superior derecha */
+        right: 10%; /* Ajusta la distancia desde el borde derecho */
+        top: 15px; /* Ajusta la distancia desde la parte superior */
+        margin-left: 15px; /* Espaciado a la izquierda del botón */
+        border: 2px solid transparent; 
+        border-radius: 80px; 
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease; 
+        font-size: 14px; 
+        font-weight: 600; 
+        text-align: center; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     }
-    
-    .qr-image {
-        width: 80px; /* Ajusta el tamaño según tus necesidades */
-        height: 80px; /* Mantén las proporciones de la imagen cuadradas */
-        margin-bottom: 40px;
+
+    .qr-button:hover {
+        background-color: #50b854; 
+        transform: scale(1.05); 
+        border: 2px solid #ffffff; 
     }
-    
-    .download-btn {
-        background-color: #54c457; /* Color de fondo */
-        color: white; /* Color del texto */
-        border: none; /* Sin borde */
-        padding: 10px 20px; /* Relleno interno */
-        font-size: 12px; /* Tamaño de fuente */
-        border-radius: 15px; /* Bordes redondeados */
-        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-        transition: background-color 0.3s ease; /* Añade una transición suave para el cambio de color de fondo */
+
+    .qr-button:focus {
+        outline: none; 
+        box-shadow: 0 0 0 3px rgba(0, 180, 82, 0.5); 
     }
-    
-    .download-btn:hover {
-        background-color: #46ac4a; /* Color de fondo al pasar el ratón */
+
+    /* Modal styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
     }
-    
-    .container h2 {
+
+    .modal-content {
+        position: relative;
+        margin: 5% auto; /* Ajustar el margen superior para que aparezca más arriba */
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 400px;
         text-align: center;
     }
-    
-    .container a {
-        display: flex;
-        margin-left: 70%;
+
+    .qr-image-large {
+        width: 100%;
+        height: auto;
     }
-    
+
+    /* Estilos del acordeón */
+    .acordeon {
+        margin-top: 0px;
+    }
+
     .acordeon .box {
         position: relative;
         margin: 10px 0;
-        border-radius: 5px; /* Borde redondeado para todo el box */
-        overflow: hidden; /* Asegura que el contenido no sobresalga del borde redondeado */
+        border-radius: 5px;
+        overflow: hidden;
     }
-    
+
     .acordeon .label-acordeon {
         background-color: transparent;
         border: none;
@@ -95,26 +128,27 @@
         font-size: 18px;
         color: black;
         padding: 15px 10px;
-        position: relative;
+        padding-right: 50px;
         cursor: pointer;
         border-bottom: 1px solid black;
         font-weight: bold;
+        position: relative;
     }
-    
+
     .acordeon .label-acordeon::after {
-        content: '\25BC'; /* Flecha hacia abajo (Unicode) */
+        content: '\25BC';
         font-size: 16px;
         position: absolute;
-        right: 27px; /* Espacio a la derecha para la flecha */
+        right: 27px;
         top: 50%;
-        transform: translateY(-50%); /* Centrar verticalmente */
-        transition: transform 0.3s ease; /* Animación para rotar la flecha */
+        transform: translateY(-50%);
+        transition: transform 0.3s ease;
     }
-    
+
     .acordeon .box.active .label-acordeon::after {
-        transform: translateY(-50%) rotate(180deg); /* Rotar la flecha hacia arriba cuando está activo */
+        transform: translateY(-50%) rotate(180deg);
     }
-    
+
     .acordeon .content-acordeon {
         background-color: white;
         max-height: 0;
@@ -124,36 +158,129 @@
         padding: 0 10px;
         box-sizing: border-box;
     }
-    
-    
-    
-    
-    .acordeon .content-acordeon p {
-        margin: 10px 0; /* Agrega margen superior e inferior para separar el texto */
-    }
-    
+
+    .acordeon .content-acordeon p,
     .acordeon .content-acordeon li {
-        margin: 10px 0; /* Agrega margen superior e inferior para separar el texto */
+        margin: 10px 0;
     }
-    
+
     .acordeon .box.active .content-acordeon {
-        max-height: 100000px; /* Suficiente altura para acomodar el contenido */
+        max-height: 100000px;
     }
-    
-    .acordeon {
-        margin-top: 20px;
+
+    /* Contenedor de videos */
+    .video-container-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
     }
-    
-    
-    </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+
+    .video-section {
+        text-align: center;
+        flex: 1;
+        max-width: 400px;
+    }
+
+    .video-section p {
+        font-weight: bold;
+        margin-bottom: 5px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        max-width: 300px;
+    }
+
+    .video-container {
+        width: 100%;
+        max-width: 300px;
+        height: 169px;
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        align-items: center;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* Media Queries para mejorar la adaptación */
+    @media (max-width: 768px) {
+        .title-container {
+            flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+            align-items: center; /* Centra los elementos */
+            margin: 0;
+        }
+
+        .qr-button {
+            margin-top: -15px; /* Espacio arriba del botón cuando está en la columna */
+            position: relative; /* Quitar posicionamiento absoluto en pantallas pequeñas */
+            right: 0; /* Restablecer el alineamiento a la izquierda */
+        }
+
+        .modal-content {
+            margin-top: 10%;
+        }
+    }
+
+    @media (max-width: 937px) {
+        .video-section p {
+            height: 40px;
+        }
+    }
+
+    @media (max-width: 500px) {
+
+        .container {
+            width: 100%;
+        }
+
+        .video-container-wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-container {
+            height: 100px;
+            width: 180px;
+            justify-content: center;
+        }
+
+        /* Asegurarte de centrar los videos */
+        .video-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra el contenido dentro de la sección */
+            text-align: center;
+        }
+
+        .video-section p {
+            height: 20px;
+        }
+
+        .content-acordeon {
+            font-size: 12px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
         const boxes = document.querySelectorAll('.acordeon .box');
-    
+
         boxes.forEach(box => {
             const label = box.querySelector('.label-acordeon');
             const content = box.querySelector('.content-acordeon');
-    
+
             label.addEventListener('click', () => {
                 if (box.classList.contains('active')) {
                     box.classList.remove('active');
@@ -168,13 +295,22 @@
                 }
             });
         });
+
+        // Modal functionality
+        const modal = document.getElementById('qrModal');
+        const btn = document.getElementById('openQrModal');
+
+        // Cuando se hace clic en el botón, abre el modal
+        btn.onclick = function() {
+            modal.style.display = 'block';
+        };
+
+        // Si se hace clic fuera del contenido del modal, ciérralo
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
     });
-    
-    
 </script>
 {% endblock %}
-    
-    
-
-
-

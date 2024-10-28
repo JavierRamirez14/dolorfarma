@@ -6,14 +6,18 @@
 
 {% block contenido %}
 <style>
+    body {
+        font-family: Arial, sans-serif; /* Agregar una fuente base */
+    }
+
     table {
         border-collapse: collapse;
         background-color: #ebeeec;
         margin: 20px auto;
         border-radius: 8px;
         overflow: hidden;
-        width: 90%;
-        table-layout: fixed;
+        width: 90%; /* Mantener el ancho de la tabla responsivo */
+        table-layout: fixed; /* Mantener un diseño de tabla fijo */
     }
 
     th, td {
@@ -24,6 +28,7 @@
     th {
         color: #343a40;
         border-bottom: 2px solid #e0e0e0;
+        white-space: nowrap; /* Evitar que el texto del encabezado se divida */
     }
 
     tr {
@@ -39,7 +44,9 @@
     }
 
     .img_dolor {
-        width: 150px;
+        width: 100%; /* Cambiar a 100% para que sea responsiva */
+        max-width: 150px; /* Ancho máximo para la imagen */
+        height: auto; /* Mantener la proporción de aspecto */
     }
 
     .col_izq {
@@ -47,12 +54,13 @@
     }
 
     .col_cen {
-        width: 50%;
+        width: 40%;
     }
 
     .col_der {
-        width: 10%;
+        width: 20%;
         text-align: center;
+        white-space: nowrap; /* Evitar que el texto se divida */
     }
 
     .popup {
@@ -70,6 +78,8 @@
         padding: 20px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         z-index: 1000;
+        max-width: 90%; /* Añadir un límite de ancho */
+        overflow-y: auto; /* Permitir el desplazamiento si es necesario */
     }
 
     .popup h2 {
@@ -107,6 +117,33 @@
         background: rgba(0, 0, 0, 0.5);
         z-index: 999;
     }
+
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+        th, td {
+            padding: 10px; /* Reducir el padding en pantallas pequeñas */
+            font-size: 14px; /* Reducir el tamaño de la fuente */
+        }
+
+        .img_dolor {
+            max-width: 100px; /* Limitar el ancho de la imagen en pantallas pequeñas */
+        }
+
+        .popup {
+            width: 90%; /* Ancho máximo para popup */
+            padding: 15px; /* Reducir padding en el popup */
+        }
+    }
+
+    @media (max-width: 480px) {
+        th, td {
+            font-size: 12px; /* Más pequeño en pantallas muy pequeñas */
+        }
+
+        .img_dolor {
+            max-width: 75px; /* Limitar aún más el ancho de la imagen */
+        }
+    }
 </style>
 
 <div class="popup" id="popup">
@@ -122,7 +159,7 @@
         <tr>
             <th class="titulo_col col_izq">Imagen</th>
             <th class="titulo_col col_cen">Patología</th>
-            <th class="titulo_col col_der">Información</th>
+            <th class="titulo_col col_der" id="info-header">Información</th> <!-- Añadir ID aquí -->
         </tr>
         {% for patologia in patologias %}
         <tr>
@@ -154,6 +191,20 @@
 </div>
 
 <script>
+    // Cambiar el texto del encabezado "Información" a "Info" en pantallas pequeñas
+    function adjustInfoHeader() {
+        const infoHeader = document.getElementById('info-header');
+        if (window.innerWidth <= 600) { // Cambia a "Info" si la pantalla es más pequeña o igual a 480px
+            infoHeader.textContent = 'Info';
+        } else {
+            infoHeader.textContent = 'Información'; // Restaura el texto original
+        }
+    }
+
+    // Llamar a la función al cargar y al redimensionar la ventana
+    window.onload = adjustInfoHeader;
+    window.onresize = adjustInfoHeader;
+
     document.querySelectorAll('.info-btn').forEach(button => {
         button.addEventListener('click', () => {
             const title = button.getAttribute('data-title');

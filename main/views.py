@@ -158,9 +158,9 @@ def patologias(request):
     dolor = request.session.get('dolor')
 
     if dolor == 'Todos':
-        patologias = Patologia.objects.filter(cuerpo=cuerpo_dolor)
+        patologias = Patologia.objects.filter(cuerpo=cuerpo_dolor, diagnostico='Con diagnóstico')
     else:
-        patologias = Patologia.objects.filter(cuerpo=cuerpo_dolor, dolor=dolor)
+        patologias = Patologia.objects.filter(cuerpo=cuerpo_dolor, dolor=dolor, diagnostico='Sin diagnóstico')
 
     if request.method == 'POST':
         patologia = request.POST.get('patologia')
@@ -174,7 +174,13 @@ def intensidad(request):
         intensidad_dolor = request.POST.get('intensidad_dolor')
         request.session['intensidad_dolor'] = intensidad_dolor
 
-        dolor = request.session.get('dolor')
+        patologia_usuario = request.session.get('patologia')
+        patologia = Patologia.objects.filter(titulo=patologia_usuario)
+
+        patologia = patologia.first()
+
+        # dolor = request.session.get('dolor')
+        dolor = patologia.dolor
         if dolor in ['Dolor_tendinoso', 'Dolor_articular']:
             return redirect('duracion')
         else:

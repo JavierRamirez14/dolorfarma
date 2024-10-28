@@ -3,9 +3,13 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 class Patologia(models.Model):
+
+    diagnostico_opciones = [('Con diagnóstico', 'Con diagnóstico'), ('Sin diagnóstico', 'Sin diagnóstico')]
+
     titulo = models.CharField(max_length=100, default='None')
     dolor = models.CharField(max_length=100, default='None')
     cuerpo = models.CharField(max_length=100, default='None')
+    diagnostico = models.CharField(max_length=30, choices=diagnostico_opciones, default='Con diagnóstico')
     descripcion = models.TextField(default='Sin descripción')
     imagen = models.ImageField(upload_to='patologia_imagenes/', null=True, blank=True)
 
