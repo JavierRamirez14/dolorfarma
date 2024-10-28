@@ -1,66 +1,115 @@
 * {
-  margin: auto;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 0; /* Eliminar márgenes por defecto */
+  padding: 0; /* Eliminar padding por defecto */
+  box-sizing: border-box; /* Incluir padding y bordes en el ancho y alto total de los elementos */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 body {
   margin: 0;
   background-color: #ffffff;
-  
 }
 
 header {
   background-color: #449846;
-  padding: 15px 0;
-  position: relative; /* Necesario para el posicionamiento absoluto del logo */
+  padding: 15px 20px; /* Añadir un poco de padding */
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
 }
 
 header i {
   color: white;
-  position: absolute;
-  left: 2%;
   font-size: 22px;
   cursor: pointer;
+  margin-left: 10px; /* Espacio a la izquierda del icono */
 }
 
 header .logo-principal {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: absolute; /* Posición absoluta para centrar el título */
+  left: 50%; /* Alinear al centro horizontalmente */
+  transform: translateX(-50%); /* Mover el título hacia la izquierda por la mitad de su ancho */
+  text-align: center; /* Centrar el texto dentro del contenedor */
 }
 
 header .logo-principal a {
   text-decoration: none;
   color: rgb(245, 245, 245);
   font-weight: bold;
+  font-size: 20px; /* Ajustar el tamaño de fuente del logo */
 }
 
 header .user-section {
   display: flex;
   align-items: center;
-  gap: 20px; /* Espacio entre el nombre de usuario y el icono de logout */
-  margin-right: 40px;
+  gap: 10px; /* Espacio entre el nombre de usuario y el icono de logout */
+  margin-right: 10px; /* Reducir el margen derecho */
 }
 
 header .nombre_usuario {
   color: white;
   margin: 0;
+  font-size: 14px; /* Tamaño de fuente más pequeño para el nombre de usuario */
 }
 
 header .logout img {
-  height: 25px;
+  height: 25px; /* Ajustar el tamaño del icono de logout */
 }
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  header {
+    padding: 10px; /* Reducir padding en pantallas más pequeñas */
+  }
+
+  header .logo-principal a {
+    font-size: 18px; /* Ajustar el tamaño de fuente del logo en pantallas pequeñas */
+  }
+
+  header .nombre_usuario {
+    font-size: 12px; /* Reducir aún más el tamaño de fuente del nombre de usuario */
+  }
+
+  header i {
+    font-size: 20px; /* Ajustar el tamaño del icono de regresar */
+  }
+
+  header .logout img {
+    height: 20px; /* Reducir el tamaño del icono de logout en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 5px; /* Reducir aún más el padding en pantallas muy pequeñas */
+  }
+
+  header .nombre_usuario {
+    font-size: 10px; /* Tamaño de fuente más pequeño */
+  }
+
+  header .logo-principal a {
+    font-size: 16px; /* Tamaño de fuente más pequeño para el logo */
+  }
+
+  header i {
+    font-size: 18px; /* Ajustar el tamaño del icono de regresar */
+  }
+
+  header .logout img {
+    height: 18px; /* Reducir aún más el tamaño del icono de logout */
+  }
+}
+
 
 
 
 .titulo {
   text-align: center;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin: 20px 0 0 0;
 }
 
 .linea-horizontal {
@@ -103,120 +152,196 @@ header .logout img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px; /* Añadir padding para evitar que los botones se peguen al borde */
 }
 
 .buttons form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 70%;
 }
 
 .buttons_int {
-  display: flex; /* Utiliza flexbox para colocar los botones en una fila */
-  justify-content: center; /* Centra los elementos a lo largo del eje principal (horizontalmente) */
-  align-items: center; /* Centra los elementos a lo largo del eje secundario (verticalmente) */
+  display: flex;
+  flex-direction: column; /* Cambiado a columna para mejorar la responsividad */
+  justify-content: center;
+  align-items: center;
 }
 
 .buttons_int form {
-  display: flex; /* También aplica flexbox al formulario para controlar los botones dentro de él */
+  display: flex;
+  flex-direction: column; 
 }
 
 .buttons_int button {
-  border: none; /* Elimina el borde por defecto de los botones */
-  background: none; /* Elimina el fondo por defecto de los botones */
-  margin: 0; /* Elimina el margen por defecto */
-  padding: 0; /* Elimina el relleno por defecto */
+  border: none; 
+  background: none; 
+  margin: 0; 
+  padding: 0; 
   cursor: pointer;
 }
 
 .buttons_int button img {
-  width: 140px; /* Ajusta el ancho de las imágenes según sea necesario */
-  height: auto; /* Mantiene la proporción de la imagen */
+  width: 140px; 
+  height: auto; 
 }
 
-  
 /* Estilos comunes para todos los botones */
 .btn-pequeño, .btn-medio, .btn-grande {
-  display: flex; /* Usar flexbox para centrar el contenido */
-  align-items: center; /* Centrar verticalmente el contenido */
-  justify-content: center; /* Centrar horizontalmente el contenido */
-  padding: 12px 24px; /* Padding uniforme */
-  background-color: #449846; /* Color base */
-  color: white; /* Texto blanco */
-  border: 2px solid transparent; /* Borde invisible por defecto */
-  border-radius: 8px; /* Bordes redondeados */
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 12px 24px; 
+  background-color: #449846; 
+  color: white; 
+  border: 2px solid transparent; 
+  border-radius: 8px; 
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
-  font-size: 16px; /* Tamaño de fuente adecuado */
-  font-weight: 600; /* Peso de fuente destacado */
-  text-align: center; /* Alineación del texto en el centro */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  font-size: 16px; 
+  font-weight: 600; 
+  text-align: center; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 /* Estilos específicos para botón pequeño */
 .btn-pequeño {
-  width: 400px;
+  width: 90%; /* Ajuste de ancho */
+  max-width: 400px; /* Máximo ancho */
   height: 60px;
   margin-bottom: 8px;
 }
 
 /* Estilos específicos para botón medio */
 .btn-medio {
-  width: 400px;
-  height: 80px; /* Ajustado para ser un poco más alto que el pequeño */
+  width: 90%; /* Ajuste de ancho */
+  max-width: 400px; /* Máximo ancho */
+  height: 80px;
   margin-bottom: 20px;
 }
 
 /* Estilos específicos para botón grande */
 .btn-grande {
-  width: 100%; /* Ocupa el 100% del contenedor padre */
-  max-width: 600px; /* Máximo ancho para evitar que se estire demasiado */
-  height: auto; /* Altura ajustada automáticamente */
+  width: 100%; 
+  max-width: 600px; 
+  height: auto; 
   margin-bottom: 15px;
-  background-color: #469e48; /* Color base más oscuro */
-  padding: 16px 24px; /* Padding ajustado para mayor espacio en botones grandes */
-  font-size: 14px; /* Tamaño de fuente mayor para mejor legibilidad */
-  line-height: 1.5; /* Mayor interlineado para texto largo */
+  background-color: #469e48; 
+  padding: 16px 24px; 
+  font-size: 14px; 
+  line-height: 1.5; 
   font-weight: 200;
 }
 
 /* Estilos en hover para todos los botones */
 .btn-pequeño:hover, .btn-medio:hover, .btn-grande:hover {
-  background-color: #50b854; /* Color más claro en hover */
-  transform: scale(1.05); /* Efecto de escala */
-  border: 2px solid #ffffff; /* Borde blanco en hover */
+  background-color: #50b854; 
+  transform: scale(1.05); 
+  border: 2px solid #ffffff; 
 }
 
 /* Estilos en foco para todos los botones */
 .btn-pequeño:focus, .btn-medio:focus, .btn-grande:focus {
-  outline: none; /* Eliminar contorno por defecto */
-  box-shadow: 0 0 0 3px rgba(0, 180, 82, 0.5); /* Sombra externa en foco */
+  outline: none; 
+  box-shadow: 0 0 0 3px rgba(0, 180, 82, 0.5); 
 }
+
+/* Media queries para mejorar la responsividad */
+@media (max-width: 768px) {
+  .buttons {
+      padding: 10px; /* Menos padding en pantallas pequeñas */
+  }
+
+  .btn-pequeño, .btn-medio, .btn-grande {
+      width: 95%; /* Botones más anchos en pantallas pequeñas */
+  }
+
+  .btn-pequeño {
+      height: 50px; /* Ajustar la altura en pantallas pequeñas */
+  }
+
+  .btn-medio {
+      height: 70px; /* Ajustar la altura en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-pequeño, .btn-medio, .btn-grande {
+      font-size: 14px; /* Tamaño de fuente más pequeño */
+  }
+}
+
 
 
 /* Botones Caras */
 
+/* Estilos generales para el contenedor de los botones */
+.container {
+  margin: 40px auto; /* Margen superior e inferior de 40px, centrado horizontalmente */
+  max-width: 90%; /* El bloque ocupa un 90% del ancho disponible */
+}
+
+/* Grid layout para las caras */
 .buttons_cara {
-  display: flex; /* Utiliza flexbox para colocar los botones en una fila */
-  justify-content: center; /* Centra los elementos a lo largo del eje principal (horizontalmente) */
-  align-items: center; /* Centra los elementos a lo largo del eje secundario (verticalmente) */
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Inicialmente, 6 columnas */
+  gap: 15px; /* Espacio entre los botones */
+  justify-items: center; /* Centra las imágenes en cada celda */
+  align-items: center;
 }
 
+/* Formulario en grid para permitir una mejor distribución */
 .buttons_cara form {
-  display: flex; /* También aplica flexbox al formulario para controlar los botones dentro de él */
+  display: contents;
 }
 
+/* Estilos para cada botón de la cara */
 .buttons_cara .cara {
-  border: none; /* Elimina el borde por defecto de los botones */
-  background: none; /* Elimina el fondo por defecto de los botones */
-  margin: 0; /* Elimina el margen por defecto */
-  padding: 0 5px; /* Elimina el relleno por defecto */
+  border: none;
+  background: none;
   cursor: pointer;
 }
 
 .buttons_cara .cara img {
-  width: 140px; /* Ajusta el ancho de las imágenes según sea necesario */
-  height: auto; /* Mantiene la proporción de la imagen */
+  width: 140px; /* Tamaño estándar de las imágenes */
+  height: auto;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Efecto hover para aumentar el tamaño de la imagen */
+.buttons_cara .cara img:hover {
+  transform: scale(1.1);
+}
+
+/* Ajustes para pantallas medianas (tabletas) */
+@media (max-width: 1024px) {
+
+  .buttons_cara .cara img {
+    width: 100px; /* Tamaño reducido en pantallas medianas */
+  }
+}
+
+/* Ajustes para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .buttons_cara {
+    grid-template-columns: repeat(3, 1fr); /* 2 columnas para pantallas más pequeñas */
+  }
+
+  .buttons_cara .cara img {
+    width: 100px; /* Tamaño reducido en pantallas pequeñas */
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .buttons_cara {
+    grid-template-columns: repeat(2, 1fr); /* 1 columna en pantallas muy pequeñas */
+  }
+
+  .buttons_cara .cara img {
+    width: 100px; /* Tamaño reducido en pantallas muy pequeñas */
+  }
 }
 
 
@@ -224,35 +349,33 @@ header .logout img {
 
 .img_cuerpo {
   text-align: center;
-  height: 400px;
+  width: 100%; /* Cambiar a 100% para que sea responsiva */
+  max-height: 400px; /* Limita la altura máxima de la imagen */
 }
-  
+
 .container {
   text-align: center;
 }
-  
+
 .cuerpo {
   position: relative;
   display: inline-block;
-}
-
-.body-image {
-  max-width: 100%;
+  width: 100%; /* Asegura que el contenedor ocupe el 100% del ancho */
+  max-width: 400px; /* Limita el ancho máximo para pantallas grandes */
 }
 
 .btn_cuerpo {
   position: absolute;
   background: radial-gradient(circle, #5ddc5b, #38a049);
   color: white;
-  width: 4px; /* Ancho del botón */
-  height: 12px; /* Altura del botón */
+  width: 3%; /* Cambia el ancho a porcentaje para que sea responsivo */
+  height: 3%; /* Cambia la altura a porcentaje para que sea responsivo */
+  max-width: 20px; /* Ancho máximo para evitar que se haga demasiado grande */
+  max-height: 20px; /* Altura máxima para evitar que se haga demasiado grande */
   border-radius: 50%; /* Hace que el botón sea circular */
   border: none;
   cursor: pointer;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden; /* Oculta el texto que sobresale del botón */
+  transform: translate(-50%, -50%); /* Centra el botón */
 }
 
 .btn_cuerpo:hover {
@@ -268,4 +391,14 @@ header .logout img {
   font-size: 9px;
   display: none;
   pointer-events: none; /* Permite que el popup no bloquee los eventos del mouse en los botones */
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+  
+  
+  .btn_cuerpo {
+    width: 4%; /* Ancho mayor en pantallas pequeñas */
+    height: 4%; /* Altura mayor en pantallas pequeñas */
+  }
 }
